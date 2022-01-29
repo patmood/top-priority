@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Top Priority</title>
+    <style>
+      :root {
+        /* https://jxnblk.github.io/hello-color */
+        --background-color: #dfb96a;
+        --text-color: #2a4994;
+      }
+      body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+        padding: 0;
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+      main {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+      }
+      h1 {
+        font-size: 1rem;
+        color: #444;
+      }
+      textarea {
+        width: 100%;
+        color: inherit;
+        text-align: center;
+        font-size: 2rem;
+        font: inherit;
+        padding: 0.25em;
+        margin: 0;
+        resize: none;
+        background: none;
+        appearance: none;
+        border: none;
+        font-size: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <label for="priorityText">
+        <!-- <h1>Top Priority</h1> -->
+      </label>
+      <textarea
+        id="priorityText"
+        placeholder="What do you need to focus on?"
+      ></textarea>
+    </main>
+    <script>
+      const STORAGE_KEY = "priority"
+      const storedText = localStorage.getItem(STORAGE_KEY)
+      priorityText.value = storedText
+      priorityText.setAttribute(
+        "style",
+        `height:${priorityText.scrollHeight}px;overflow-y:hidden;`
+      )
+
+      priorityText.addEventListener("input", ({ target }) => {
+        target.style.height = "auto"
+        target.style.height = target.scrollHeight + "px"
+      })
+
+      priorityText.addEventListener("change", ({ target: { value } }) => {
+        localStorage.setItem("priority", value)
+      })
+    </script>
+  </body>
+</html>
